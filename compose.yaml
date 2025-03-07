@@ -1,0 +1,30 @@
+﻿services:
+  eediApi:
+    image: api
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    container_name: eediApi
+    ports:
+      - "5020:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+    depends_on:
+      - eedisqlserver
+    restart: unless-stopped
+      
+  eedisqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: eedisqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y" # Required to accept the SQL Server license agreement
+      SA_PASSWORD: "OurStrongPassword1!" # Set a strong password for the 'sa' user
+    volumes:
+      - sql_data:/var/opt/mssql
+    restart: unless-stopped
+  
+volumes:
+  sql_data:

@@ -1,0 +1,65 @@
+@API_HostAddress = http://localhost:5272
+
+#### Valid request - Get all misconceptions for student id
+GET {{API_HostAddress}}/api/improve/misconceptions/1
+Accept: application/json
+
+### Valid request - Get all misconceptions for student id
+GET {{API_HostAddress}}/api/improve/misconceptions/2
+Accept: application/json
+
+### No content request - Get all misconceptions for student id
+GET {{API_HostAddress}}/api/improve/misconceptions/3
+Accept: application/json
+
+### Not found request - Get all misconceptions for student id
+GET {{API_HostAddress}}/api/improve/misconceptions/4
+Accept: application/json
+
+### Bad request - Get all misconceptions for student id
+GET {{API_HostAddress}}/api/improve/misconceptions/hi
+Accept: application/json
+
+########################################################################################
+
+#### Valid request - Get all misconceptions for student id by sub topic
+GET {{API_HostAddress}}/api/improve/misconceptions/1/subtopics/1
+Accept: application/json
+
+### Valid request - Get all misconceptions for student id by sub topic
+GET {{API_HostAddress}}/api/improve/misconceptions/2/subtopics/1
+Accept: application/json
+
+### Not found request - Get all misconceptions for student id by sub topic - Student is valid but this question was never answered by this student
+GET {{API_HostAddress}}/api/improve/misconceptions/3/subtopics/1
+Accept: application/json
+
+### Not found request - Get all misconceptions for student id by sub topic - student id is not valid
+GET {{API_HostAddress}}/api/improve/misconceptions/4/subtopics/1
+Accept: application/json
+
+### Bad request - Get all misconceptions for student id by sub topic - invalid format
+GET {{API_HostAddress}}/api/improve/misconceptions/hi/subtopics/1
+Accept: application/json
+
+########################################################################################
+
+#### Valid request - Student Updates the answer for misconception by question id
+PUT {{API_HostAddress}}/api/improve/misconceptions/1/questions/1/answer/1
+Accept: application/json
+
+### Valid request - Student Updates the answer for misconception by question id
+PUT {{API_HostAddress}}/api/improve/misconceptions/1/questions/1/answer/2
+Accept: application/json
+
+### Not found request - Student Updates the answer for misconception by question id - Student is valid but this question was never answered by this student
+PUT {{API_HostAddress}}/api/improve/misconceptions/3/questions/1/answer/1
+Accept: application/json
+
+### Not found request - Student Updates the answer for misconception by question id - student id is not valid
+PUT {{API_HostAddress}}/api/improve/misconceptions/4/questions/1/answer/1
+Accept: application/json
+
+### Bad request - Student Updates the answer for misconception by question id - invalid format
+PUT {{API_HostAddress}}/api/improve/misconceptions/hi/questions/1/answer/1
+Accept: application/json
