@@ -10,7 +10,7 @@ namespace API.Controllers;
 public class ImproveController(ILogger<ImproveController> logger, IServiceManager serviceManager) : ControllerBase
 {
     /// <summary>
-    /// Retrieves misconceptions for a student.
+    /// Retrieves all misconceptions for a student.
     /// </summary>
     /// <param name="studentId">The ID of the student</param>
     /// <returns>List of Topics with misconceptions</returns>
@@ -25,7 +25,7 @@ public class ImproveController(ILogger<ImproveController> logger, IServiceManage
     [HttpGet()]
     public async Task<IActionResult> GetMisConceptionsForStudent(int studentId)
     {
-        // logger.LogInformation($"Get Misconceptions for student {studentId}");
+        logger.LogInformation($"Get Misconceptions for student {studentId}");
         var misconceptionsDtos =
             await serviceManager.ImproveService.GetMisConceptionsForStudent(studentId);
 
@@ -39,7 +39,7 @@ public class ImproveController(ILogger<ImproveController> logger, IServiceManage
     }
 
     /// <summary>
-    /// Retrieves misconceptions for a student in a specific subtopic.
+    /// View questions - misconceptions for a student in a specific subtopic.
     /// </summary>
     /// <param name="studentId">The ID of the student</param>
     /// <param name="subtopicId">The ID of the subtopic</param>
